@@ -9,6 +9,7 @@ def factorize_function(value):
             return num, int(value / num)
     return None
 
+
 if __name__ == '__main__':
     """
         this program runs the sript directly as the main file
@@ -25,21 +26,27 @@ if __name__ == '__main__':
     except FileNotFoundError:
         print("No file found")
         exit()
-
+    
+    for i in rows:
+        number = int(i.strip())
+        factors = factorize_function(number)
+        print(f"{i.strip()}:{'*'.join(map(str, factors))}")
+    """
     begining = time.time()
     for i in rows:
-        """
+        
             loops and checks for natural number
             then prints factorized numbers
-        """
+        
         number = int(i.strip())
         f_actor = factorize_function(number)
         if f_actor:
             print(f"{number}={f_actor[0]}*{f_actor[1]}")
 
         if time.time() - begining > 5:
-            """
+            
                 program exit if function runs for more than 5 secs
-            """
+            
             print("Session timed out")
             exit()
+    """
