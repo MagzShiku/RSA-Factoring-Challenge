@@ -1,0 +1,29 @@
+#!/usr/bin/python3
+
+import sys
+
+def factorize_function(value):
+    for num in range(2, int(value/2) + 1):
+        if value % num == 0:
+            return num, int(value / num)
+    return None
+
+if __name__ == '__main__':
+    """
+        this program runs the sript directly as the main file
+        or if it is being imported into another script
+    """
+    if len(sys.argv) > 1:
+        with open(sys.argv[1], 'r') as file:
+            for rows in file:
+                number = int(rows.strip())
+                """
+                    strip(): removes any trailing white spaces from the line
+                """
+                f_actor = factorize_function(number)
+
+                print(f"{number}={f_actor[0]}*{f_actor[1]}")
+    else:
+        print("Usage: factors <file>")
+
+
